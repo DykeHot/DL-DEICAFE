@@ -1,0 +1,58 @@
+from django.contrib.auth import login as auth_login
+from django.http import HttpResponseRedirect
+from django.urls import reverse, reverse_lazy
+from django.contrib.auth.views import LoginView
+from .models import customer
+from .forms import loginform
+
+c ="customer"
+ 
+class login(LoginView):
+    model = customer
+    form_class = loginform
+    template_name = c + "login.html"
+    success_url = reverse_lazy("top")
+    redirect_authenticated_user = False
+ 
+    def post(self, request, *args, **kwargs):
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        print("POST")
+ 
+        try:
+            customer_ = customer.objects.get(username=username)
+            if customer_.check_password(password):
+                print("CUSTOMER_.PASSWORD == PASSWORD")
+                auth_login(request, customer_, backend="deicafeapp.authentication.CustomAuthenticationBackend")
+ 
+                # リダイレクト先のURLを取得
+                next_url = self.request.GET.get('next') or self.get_success_url()
+                print("NEXT_URL:", next_url)
+                return HttpResponseRedirect(next_url)
+ 
+            else:
+                print("ELSE: Invalid password")
+                return self.form_invalid(self.get_form())
+ 
+        except customer.DoesNotExist:
+            print("EXCEPTION: Customer does not exist")
+            return self.form_invalid(self.get_form())
+ 
+    def get_form_kwargs(self):
+        # フォームにリクエストを渡す
+        kwargs = super().get_form_kwargs()
+        kwargs['request'] = self.request
+        return kwargs
+ 
+    def get_success_url(self):
+        print("URL")
+        if self.request.user.is_authenticated:
+            return reverse('top')
+        else:
+            print("Anonymous LoggedIn!")
+            return reverse('login')
+ 
+    def form_invalid(self, form):
+        print("Invalid form!")
+        print(form.errors)
+        return super().form_invalid(form)

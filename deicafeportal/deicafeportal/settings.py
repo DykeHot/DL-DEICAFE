@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -127,6 +127,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+#AUTH_USER_MODEL = "deicafeapp.customer"
 AUTH_USER_MODEL = "deicafeapp.Employee"
 
 AUTHENTICATION_BACKENDS = [
@@ -141,8 +142,8 @@ SESSION_COOKIE_AGE = 1209600  # セッションクッキーの有効期間（秒
 SESSION_SAVE_EVERY_REQUEST = True  # 各リクエストごとにセッションを保存
 
 
-LOGIN_URL = reverse_lazy("login")
-LOGIN_REDIRECT_URL = reverse_lazy("top")
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "top"
 #LOGOUT_REDIRECT_URL = "logout"
 
 DEBUG_LOGIN_REDIRECT_URL = "debugtop"

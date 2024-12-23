@@ -40,6 +40,7 @@ urlpatterns = [
     path(d + "debuglogin/", views.debuglogin.as_view(), name = "debuglogin"),
     path(d + "top/", views.debugtop.as_view(), name = "debugtop"),
     path(d + "logoutsuccess/", views.debuglogout.as_view(), name = "debuglogout"),
+    path(d + "non-reservation/", views.nonreservationlog.as_view(), name = "nonreservationlog")
 ]
 
 

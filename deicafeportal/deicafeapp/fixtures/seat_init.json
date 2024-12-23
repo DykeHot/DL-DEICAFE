@@ -1,0 +1,58 @@
+[
+    {
+        "model": "deicafeapp.seat",
+        "pk": 1,
+        "fields": {
+            "seat_number": "0001"
+        }
+    },
+    {
+        "model": "deicafeapp.seat",
+        "pk": 2,
+        "fields": {
+            "seat_number": "0002"
+        }
+    },
+    {
+        "model": "deicafeapp.seat",
+        "pk": 3,
+        "fields": {
+            "seat_number": "0003"
+        }
+    },
+    {
+        "model": "deicafeapp.seat",
+        "pk": 4,
+        "fields": {
+            "seat_number": "0004"
+        }
+    },
+    {
+        "model": "deicafeapp.seat",
+        "pk": 5,
+        "fields": {
+            "seat_number": "0005"
+        }
+    },
+    {
+        "model": "deicafeapp.seat",
+        "pk": 6,
+        "fields": {
+            "seat_number": "0006"
+        }
+    },
+    {
+        "model": "deicafeapp.seat",
+        "pk": 7,
+        "fields": {
+            "seat_number": "0007"
+        }
+    },
+    {
+        "model": "deicafeapp.seat",
+        "pk": 8,
+        "fields": {
+            "seat_number": "0008"
+        }
+    }
+]

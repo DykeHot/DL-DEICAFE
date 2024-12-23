@@ -11,6 +11,7 @@ from django.contrib.auth.models import AnonymousUser
 from django.shortcuts import redirect
 from django.contrib.auth import login as log_in
 from django.http import HttpResponse, HttpResponseRedirect
+import calendar
 
 # Create your views here.
 
@@ -41,7 +42,7 @@ class deicafebasis(TemplateView):
 
 class login(LoginView):
     model = customer
-    form_class = loginform
+    form_class = AuthenticationForm
     template_name = c + "login.html"
     success_url = reverse_lazy("top")
     redirect_authenticated_user = False
@@ -55,26 +56,20 @@ class login(LoginView):
             
             customer_ = customer.objects.get(username = username)
             if customer_.check_password(password):
-                print("CUSTOMER_.PASSWORD == PASSWORD")
                 log_in(request, customer_, backend = "deicafeapp.authentication.CustomAuthenticationBackend")
                 
-                next_url = self.get_success_url()  # リダイレクト先のURLを取得
-                if next_url:
-                    response_ = reverse_lazy("top")
-                    #response_.set_cookie("my_cookie", "cookie_value", max_age=3600)
-                    print("NEXT_URL_REDIRECT")
-                    return HttpResponseRedirect(next_url)  # `next`があればそのURLへリダイレクト
-                else:
-                    print("NEXT_URL_NONE")
-                    return HttpResponseRedirect(next_url) + (reverse_lazy("top"))
-                
-               
-
-            else:
-                print("ELSE")
+                # リダイレクト先のURLを取得
+                next_url = self.request.GET.get('next') or self.get_success_url()
+                print("NEXT_URL:", next_url)
                 return HttpResponseRedirect(next_url)
+ 
+            else:
+                print("ELSE: Invalid password")
+                return self.form_invalid(self.get_form())
+ 
         except customer.DoesNotExist:
-            return HttpResponseRedirect(next_url)
+            print("EXCEPTION: Customer does not exist")
+            return self.form_invalid(self.get_form())
         
 
 
@@ -85,17 +80,7 @@ class login(LoginView):
         return kwargs
 
     def get_success_url(self):
-        print("URL")
-        if self.request.user.is_authenticated:
-            if '/login/' in self.request.path:# 通常の顧客用ログインページ
-                return reverse('top')  # 'top'にリダイレクト
-            else:
-                print("not success")
-            
-        else:
-            print("Anonymous LoggedIn!")
-            return reverse('login')
-        return super().get_success_url()
+        return reverse_lazy("top")
     
     def form_invalid(self, form):
         print("Invalid!")
@@ -179,9 +164,20 @@ class debugtop(LoginRequiredMixin, ListView):
     
     def get_queryset(self):
         return seat.objects.all()
+
+class nonreservationlog(LoginRequiredMixin, CreateView):
+    model = reservation
+    fields = "__all__"
+    context_object_name = "reservation_list"
+    template_name = d + "non-reservation.html"
+
     
+
+
 
 class debuglogout(LoginRequiredMixin, LogoutView):
     template_name = d + "logoutsuccess.html"
+
+
 
 

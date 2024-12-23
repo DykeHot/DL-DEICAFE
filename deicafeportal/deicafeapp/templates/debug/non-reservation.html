@@ -1,0 +1,44 @@
+{% extends "basis.html" %}
+{% load static%}
+
+{% block title %}非予約受付{% endblock %}
+ {% block content %}
+
+ <h1 class = "deicafeh1">非予約受付フォーム</h1>
+
+ <section id = "reservewindow">
+    <div class = "topcheil" style = "background: skyblue;">
+        calendar
+    </div>
+    <div class = "topcheil">
+        <form method="post" enctype="multipart/form-data" class = "showing" enctype="multipart/form-data"  action="">
+            {% csrf_token %}
+            <div class = "formdiv">
+                <input class = "creationform" type="text" name = "username" placeholder = "ユーザー名" value = {% if form.username.value %}{{ form.username.value }}{% endif %}>
+                {% for error in form.username.errors %}<div class="errorm">{{ error }}</div>{% endfor %}
+                <input class = "creationform" type="password" name = "password" placeholder = "パスワード" value = {% if form.username.value %}{{ form.username.value }}{% endif %}>
+                {% for error in form.password.errors %}<div class="errorm">{{ error }}</div>{% endfor %}
+                <div class="errorm">
+                    {% if form.non_field_errors %}
+                        {% for error in form.non_field_errors %}
+                            <div>{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+            </div>
+            <br>
+            <div class = "logpage">
+            <input type="submit" class="submitbutton" value="ログイン" class = "lower">
+            
+            </div>
+        
+        </form>
+    </div>
+ </section>
+
+ <div class = "pagenation">
+    <a href="{% url "debugtop" %}" class = "commandbutton" style = "background: red;">トップに戻る</a>
+    
+</div>
+ 
+
+ {% endblock %}　

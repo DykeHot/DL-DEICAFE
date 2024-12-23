@@ -6,7 +6,7 @@
  <h1 class = "deicafeh1">ログインページ</h1>
 
 
- <form method="post" enctype="multipart/form-data" class = "showing" enctype="multipart/form-data"  action="{% url 'login' %}?next={{ request.GET.next }}">
+ <form method="post" enctype="multipart/form-data" class = "showing" enctype="multipart/form-data">
     {% csrf_token %}
     <div class = "formdiv">
         <input class = "creationform" type="text" name = "username" placeholder = "ユーザー名" value = {% if form.username.value %}{{ form.username.value }}{% endif %}>

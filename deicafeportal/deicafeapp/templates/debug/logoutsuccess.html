@@ -1,0 +1,16 @@
+{% extends "debugbasis.html" %}
+{% load static%}
+
+{% block title %}ログアウト成功{% endblock %}
+ {% block content %}
+ <h1 class = "deicafeh1">ログアウトに成功しました</h1>
+
+
+ <form method="post" enctype="multipart/form-data" class = "showing" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+     <div class = "pagenation">
+     <a href="{% url "debuglogin" %}" class = "commandbutton" style = "background: red;">トップに戻る</a>
+    </div>
+ </form>
+ {% endblock %}　

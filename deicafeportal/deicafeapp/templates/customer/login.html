@@ -1,0 +1,31 @@
+{% extends "basis.html" %}
+{% load static%}
+
+{% block title %}ログインページ{% endblock %}
+ {% block content %}
+ <h1 class = "deicafeh1">ログインページ</h1>
+
+
+ <form method="post" enctype="multipart/form-data" class = "showing" enctype="multipart/form-data"  action="{% url 'login' %}?next={{ request.GET.next }}">
+    {% csrf_token %}
+    <div class = "formdiv">
+        <input class = "creationform" type="text" name = "username" placeholder = "ユーザー名" value = {% if form.username.value %}{{ form.username.value }}{% endif %}>
+        {% for error in form.username.errors %}<div class="errorm">{{ error }}</div>{% endfor %}
+        <input class = "creationform" type="password" name = "password" placeholder = "パスワード">
+        {% for error in form.password.errors %}<div class="errorm">{{ error }}</div>{% endfor %}
+        <div class="errorm">
+            {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                    <div>{{ error }}</div>
+                {% endfor %}
+            {% endif %}
+    </div>
+     <br>
+     <div class = "logpage">
+     <input type="submit" class="btn btn-primary" value="ログイン" class = "lower">
+     <p class = "lower">初めての方ですか?</p>
+     <a href="{% url "creteaccount" %}" class = "lower">アカウントを新規作成</a>
+    </div>
+    
+ </form>
+ {% endblock %}　

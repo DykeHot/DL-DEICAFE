@@ -1,0 +1,43 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '../static/css/deicafestyle.css'%}">
+    <title>{% block title %} {% endblock %}</title>
+</head>
+
+<body>
+    <nav class="navigat" style="margin-bottom: 1rem;">
+        <div class="container-fluid">
+            
+            <a class="toplink" href="">DEICAFE</a>
+            
+            <div class="palette" id="link">
+                <ul class="userpalette">
+                    {% if user.is_authenticated %}
+                    <span class="nav-item">
+                        <p class = "welcome">ようこそ<br>{{ user.get_username }}さん</p>
+                    </span>
+                    <li class="nav-item">
+                        <form action="{% url "logout" %}" method="post">
+                            {% csrf_token %}
+                            <input class="nav-link" type="submit" value="ログアウト">
+                        </form>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

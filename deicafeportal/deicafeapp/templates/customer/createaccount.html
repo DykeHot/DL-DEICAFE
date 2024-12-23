@@ -1,0 +1,41 @@
+{% extends "basis.html" %}
+{% load static %}
+
+{% block title %}新規作成{% endblock %}
+ {% block content %}
+ <h1 class = "deicafeh1">deicafe 新規作成</h1>
+
+
+
+ <form method="post" enctype="multipart/form-data" class = "showing">
+    {% csrf_token %}
+    <div class = "formdiv">
+        <input class = "creationform" type="text" name = "family_name" placeholder = "苗字" value = {% if form.family_name.value %}{{ form.family_name.value }}{% endif %}>
+        {% for error in form.family_name.errors %}<div class="errorm">{{ error }}</div>{% endfor %}
+        <input class = "creationform" type="text" name = "personal_name" placeholder = "名前" value = {% if form.personal_name.value %}{{ form.personal_name.value }}{% endif %}>
+        {% for error in form.personal_name.errors %}<div class="errorm">{{ error }}</div>{% endfor %}
+        <input class = "creationform" type="tel" name = "telephone_number" placeholder = "電話番号" value = {% if form.telephone_number.value %}{{ form.telephone_number.value }}{% endif %}>
+        {% for error in form.telephone_number.errors %}<div class="errorm">{{ error }}</div>{% endfor %}
+        <input class = "creationform" type="email" name = "mail_address" placeholder = "メールアドレス" value = {% if form.mail_address.value %}{{ form.mail_address.value }}{% endif %}>
+        {% for error in form.mail_address.errors %}<div class="errorm">{{ error }}</div>{% endfor %}
+        <input class = "creationform" type="password" name = "password1" placeholder = "パスワード">
+        {% for error in form.password1.errors %}<div class="errorm">{{ error }}</div>{% endfor %}
+        <input class = "creationform" type="password" name = "password2" placeholder = "パスワード">
+        {% for error in form.password2.errors %}<div class="errorm">{{ error }}</div>{% endfor %}
+        
+        <div class="errorm">
+            {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                    <div>{{ error }}</div>
+                {% endfor %}
+            {% endif %}
+
+            
+    </div>
+     <br>
+     <div class = "logpage">
+     <input type="submit"  value="登録" class = "lower">
+    </div>
+    
+ </form>
+ {% endblock %}　

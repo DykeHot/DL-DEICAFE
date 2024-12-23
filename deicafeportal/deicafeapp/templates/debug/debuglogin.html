@@ -1,0 +1,22 @@
+{% extends "debugbasis.html" %}
+{% load static%}
+
+{% block title %}店舗管理用ログインページ{% endblock %}
+ {% block content %}
+ <h1 class = "deicafeh1">ログインページ</h1>
+
+
+ <form method="post" enctype="multipart/form-data" class = "showing" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class = "formdiv">
+        <input class = "creationform" type="text" name = "username" placeholder = "ユーザー名" value = {% if form.username.value %}{{ form.username.value }}{% endif %}>
+        {% for error in form.username.errors %}<div class="errorm">{{ error }}</div>{% endfor %}
+        <input class = "creationform" type="password" name = "password" placeholder = "パスワード" value = {% if form.password.value %}{{ form.password.value }}{% endif %}>
+        {% for error in form.password.errors %}<div class="errorm">{{ error }}</div>{% endfor %}
+    </div>
+     <br>
+     <div class = "pagenation">
+     <input type="submit" class="btn btn-primary" value="ログイン" class = "commandbutton" style = "background: blue;">
+    </div>
+ </form>
+ {% endblock %}　

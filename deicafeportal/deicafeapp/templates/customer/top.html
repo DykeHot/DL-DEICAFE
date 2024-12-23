@@ -1,0 +1,28 @@
+{% extends "basis.html" %}
+{% load static%}
+
+{% block title %}トップ{% endblock %}
+ {% block content %}
+ <h1 class = "deicafeh1">dei café　お客様用ポータル</h1>
+ 
+ <section id = "topwindow">
+    <div class = "topcheil">
+        <div class = "topchei" style = "background: gray;"><!--現在の席状況を表示する--> 現在の予約状況
+            {}
+        </div>
+    </div>
+    <div class = "topcheil">
+        <div class = "topchesam" style = "">カレンダー</div><!--非予約受付ボタンを入れる-->
+        <div class = "topchesam" style = "">
+            <div class = "commandrow">
+                <a href="" class = "commandbutton" style = "background: mediumblue;">新規予約</a>
+            </div>
+            <div class = "commandrow">
+                <a href="" class = "commandbutton" style = "background: seagreen;">予約の確認</a>
+            </div>
+        </div><!--「会計」「待合案内」コマンドボタンを入れる-->
+    </div>
+
+ </section>
+
+ {% endblock %}　

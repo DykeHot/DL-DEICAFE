@@ -1,0 +1,41 @@
+{% extends "debugbasis.html" %}
+{% load static%}
+
+{% block title %}店舗管理用ログインページ{% endblock %}
+ {% block content %}
+ <h1 class = "deicafeh1">dei café 千代坂二丁目店 {{request.user}}</h1>
+
+ 
+ <section id = "topwindow">
+    <div class = "topcheil">
+        <div class = "topchei" style = ""><!--現在の席状況を表示する-->
+            <table class = "topseat">
+                <tr><th>席番号</th><th>ステータス</th></tr>
+                {% for p in seat_list %}
+                <tr>
+                <td>{{p.seat_number}}</td>
+                <td>{% if p.is_inuse == True %}〇{% elif p.is_inuse == None%}-{% else %}×{% endif %}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <div class = "topcheil">
+        <div class = "topchesam" style = "">カレンダー</div><!--非予約受付ボタンを入れる-->
+        <div class = "topchesam" style = "">
+            <div class = "commandrow">
+                <a href="" class = "commandbutton" style = "background: forestgreen;">非予約受付</a>
+                <a href="" class = "commandbutton" style = "background: peru;">イベント予約</a>
+            </div>
+            <div class = "commandrow">
+                <a href="" class = "commandbutton" style = "background: crimson;">会計</a>
+                <a href="" class = "commandbutton" style = "background: rebeccapurple;">待合案内</a>
+            </div>
+        </div><!--「会計」「待合案内」コマンドボタンを入れる-->
+    </div>
+
+ </section>
+
+
+
+ {% endblock %}　

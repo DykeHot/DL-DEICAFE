@@ -1,0 +1,240 @@
+.menu {
+    border: 4px;
+    border-color: palevioletred;
+    background-color: bisque;
+    margin: auto;
+    
+ }
+ 
+ .navigat {
+  background-color: rgb(179, 165, 123);
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+ }
+
+ .nav-item {
+  width: 150px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+ }
+
+ .welcome {
+  color: white;
+ }
+
+ 
+
+.container-fluid {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+
+.toplink {
+  width: 150px;
+  margin-left: 30px;
+  float: left;
+}
+
+ .userpalette {
+  display: flex;
+  justify-content: flex-end;
+  width: 300px;
+  float: right;
+ }
+
+ .nav-item{
+  float: right;
+ }
+
+ .palette {
+  width: 550px;
+  height: auto;
+ }
+
+ .menu tr:nth-of-type(1){
+   width: 130px;
+ }
+
+ .showing{
+   margin: 0  auto;
+   width: 100%;
+   height: auto;
+   flex-direction: column;
+   align-items: center;
+ }
+
+.formdiv {
+  width: 400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+}
+
+ .deicafeh1 {
+   text-align: center;
+   color: black;
+ }
+
+ body {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+ }
+
+#topwindow {
+  display: flex;
+  width: 87%;
+  height: 460px;
+  margin: 0 auto;
+}
+
+.topcheil {
+  float: left;
+  width: 50%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.topchei {
+  width: 100%;
+  height: 100%;
+}
+
+.topchesam {
+  width: 100%;
+  height: 200px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  filter: drop-shadow(5px 5px 5px #4e4e4e);
+  background: white;
+  display: flex;
+  flex-flow: column;
+}
+
+.topseat {
+  width: 90%;
+  height: 95%;
+  margin: auto;
+  background: whitesmoke;
+  border-color:  black;
+  border-radius: 10px;
+  text-align: center;
+  filter: drop-shadow(5px 5px 5px #4e4e4e);
+}
+
+.topseat, .topseat th, .topseat td{
+  border: 1px solid black;
+}
+
+.topseat tr:first-child>*:first-child{
+  border-radius: 10px 0 0 0;
+}
+.topseat tr:first-child>*:last-child{
+  border-radius: 0 10px 0 0;
+}
+.topseat tr:last-child>*:first-child{
+  border-radius: 0 0 0 10px;
+}
+.topseat tr:last-child>*:last-child{
+  border-radius: 0 0 10px 0;
+}
+
+.commandrow {
+  width: 90%;
+  height: 45%;
+  margin: auto;
+  display: flex;
+}
+
+.commandbutton {
+  border-radius: 5px;
+  width: 150px;
+  height: 20px;
+  text-align: center;
+  float: left;
+  margin: auto;
+  padding: 20px 0;
+  text-decoration-line: none;
+  transition-duration: 0.4s;
+  color: white;
+}
+
+.commandbutton:hover{
+  width: 200px;
+  font-size: 150%;
+  padding-top: 15px;
+  padding-bottom: 25px;
+  opacity: 0.8;
+}
+
+
+.pagenation {
+   width: 400px;
+   margin: auto;
+   display: flex;
+   justify-content: center;
+   padding-top: 15px;
+ }
+
+ .lower{ 
+   text-align: center;
+   display: block;
+   margin: 3px auto;
+ }
+
+ .logpage {
+  width: 400px;
+  height: 200px;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 15px;
+}
+
+
+ .actionbutton {
+  width: 40px;
+  height: 30px;
+  color: white;
+  border: 2px;
+  border-radius: 20px;
+ }
+
+ .actionbutton :hover{
+  opacity: 0.8;
+ }
+
+ .shinaname {
+  width: 400px;
+ }
+
+ .zhong {
+  width: 100px;
+ }
+
+ .creationform {
+  font-size: 20px;
+  margin: 10px auto;
+  width: 300px;
+ }
+
+ .pagebutton {
+  width: 90px;
+  height: 51px;
+ }
+
+ .zann {
+  text-align: center;
+  margin-top: 20px;
+ }
+
